@@ -12,7 +12,6 @@ function App() {
   const [WPM, setWPM] = useState<number>(0);
   const [accuracy, setAccuracy] = useState<number>(0);
   const [word, setWord] = useState<{correctWord: number, wrongWord: number}>({correctWord:0, wrongWord:0});
-  const [highScore, setHighScore] = useState<number>(parseInt(localStorage.getItem('highScore') || "0", 10));
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
 
@@ -78,11 +77,6 @@ function App() {
     const accuracyPercentage = ((wordTyped / samplePara.split(" ").length) * 100).toFixed(2);
     setAccuracy(parseFloat(accuracyPercentage));
 
-    if (wordTyped > highScore) {
-      setHighScore(wordTyped);
-      localStorage.setItem('highScore', wordTyped.toString());
-    }
-
     setWord(handleCorrectWord());
 
   }
@@ -144,7 +138,7 @@ return (
             }
           ></textarea>
           <div className='flex justify-between items-center mt-4'>
-            <div></div>
+            <div><p> Time remaining: {timeRemaining}s</p></div>
             <button
               onClick={isTimeRunning ? endGame : startGame}
               className={`px-6 py-2 bg-blue-500 text-white rounded-md transition duration-300 ${isTimeRunning ? "bg-red-500" : ""}`}
@@ -153,8 +147,6 @@ return (
             </button>
           </div>
           <div className='flex justify-between mt-4'>
-            <p> Time remaining: {timeRemaining}s</p>
-            <p> High Score: {highScore} WPM</p>
           </div>
           <div className=' flex justify-between mt-4'>
             <p>WPM: {WPM}</p>
