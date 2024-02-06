@@ -107,14 +107,13 @@ function App() {
     const textArray = text.split(" ");
 
     textArray.forEach((word) => {
-        if(word){
             if(word === sampleParaArray[j]){
                 correctWord++;
             }else{
                 wrongWord++;
             }
             j++;
-        }
+        
     })
     return {correctWord, wrongWord};
     
