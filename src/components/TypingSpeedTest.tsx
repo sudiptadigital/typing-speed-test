@@ -106,14 +106,17 @@ function App() {
     const sampleParaArray = samplePara.split(" ");
     const textArray = text.split(" ");
 
-    textArray.forEach((word) => {
-            if(word === sampleParaArray[j]){
+    textArray.forEach((word, index) => {
+        if(word){
+            console.log(`${word} === ${sampleParaArray[index]}`);
+            
+            if(word === sampleParaArray[index]){
                 correctWord++;
             }else{
                 wrongWord++;
             }
             j++;
-        
+        }
     })
     return {correctWord, wrongWord};
     
