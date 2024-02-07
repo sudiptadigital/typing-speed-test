@@ -108,8 +108,6 @@ function App() {
 
     textArray.forEach((word, index) => {
         if(word){
-            console.log(`${word} === ${sampleParaArray[index]}`);
-            
             if(word === sampleParaArray[index]){
                 correctWord++;
             }else{
